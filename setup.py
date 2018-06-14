@@ -1,48 +1,52 @@
-"""
-A tool to aggregate custom command line tool into one
-"""
-from setuptools import find_packages, setup
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-dependencies = ['click', 'pyyaml']
+"""The setup script."""
+
+from setuptools import setup, find_packages
+
+with open('README.rst') as readme_file:
+    readme = readme_file.read()
+
+setup_requirements = ['pytest-runner']
+
+with open('requirements.txt') as f:
+    requirements = list(f.readlines())
+
+test_requirements = ['pytest']
 
 setup(
-    name='gogo-gadget',
-    version='0.1.0',
-    url='https://github.com/izcram/gogo-gadget-repo',
-    license='BSD',
-    author='Marc Zimmermann',
+    author="Marc Zimmermann",
     author_email='marc.zimmermann@inf.ethz.ch',
-    description='A tool to aggregate custom command line tool into one',
-    long_description=__doc__,
-    packages=find_packages(exclude=['tests']),
-    include_package_data=True,
-    zip_safe=False,
-    platforms='any',
-    install_requires=dependencies,
+    classifiers=[
+        'Development Status :: 2 - Pre-Alpha',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        "Programming Language :: Python :: 2",
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+    ],
+    description="A tool to aggregate custom command line tools into one",
     entry_points={
         'console_scripts': [
-            'gogo = gogo_gadget.cli:main',
+            'gogo = gogo_gadget.cli:main'
         ],
     },
-    classifiers=[
-        # As from http://pypi.python.org/pypi?%3Aaction=list_classifiers
-        # 'Development Status :: 1 - Planning',
-        # 'Development Status :: 2 - Pre-Alpha',
-        # 'Development Status :: 3 - Alpha',
-        'Development Status :: 4 - Beta',
-        # 'Development Status :: 5 - Production/Stable',
-        # 'Development Status :: 6 - Mature',
-        # 'Development Status :: 7 - Inactive',
-        'Environment :: Console',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',
-        'Operating System :: POSIX',
-        'Operating System :: MacOS',
-        'Operating System :: Unix',
-        'Operating System :: Microsoft :: Windows',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 3',
-        'Topic :: Software Development :: Libraries :: Python Modules',
-    ]
+    install_requires=requirements,
+    license="MIT license",
+    long_description=readme,
+    include_package_data=True,
+    keywords='gogo-gadget',
+    name='gogo-gadget',
+    packages=find_packages(include=['gogo-gadget']),
+    setup_requires=setup_requirements,
+    test_suite='tests',
+    tests_require=test_requirements,
+    url='https://github.com/ratschlab/gogo-gadget',
+    version='0.1.0',
+    zip_safe=False,
 )

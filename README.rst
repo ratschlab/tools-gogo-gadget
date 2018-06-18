@@ -25,6 +25,22 @@ creates a command line interface on the fly using the `click` python library
 (http://click.pocoo.org).
 
 
+Installation
+------------
+
+It is recommended to use `pipsi` https://github.com/mitsuhiko/pipsi to install
+`gogo-gadget`. Once `pipsi` is installed, run::
+
+  pipsi install gogo-gadget
+
+A `pip install gogo-gadget` would also work in principle, however, gogo would
+need to be installed in all virtual environments used.
+
+To enable tab autocompletion in the bash, add the following to `.bashrc`::
+
+  eval "$(_GOGO_COMPLETE=source gogo)"
+
+
 Example gogo File
 -----------------
 

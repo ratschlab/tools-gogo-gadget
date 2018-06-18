@@ -1,3 +1,10 @@
+"""
+A tool to aggregate custom command line tools into one.
+
+On startup, a gogo file in YAML format is read and a command line interface
+is created on the fly.
+"""
+
 import os
 import subprocess
 import sys

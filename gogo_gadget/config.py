@@ -5,7 +5,7 @@ import yaml
 
 
 def load_config(path):
-    with open(path, 'r') as f:
+    with open(str(path), 'r') as f:
         try:
             return yaml.load(f, Loader=yaml.FullLoader)
         except yaml.YAMLError as exc:

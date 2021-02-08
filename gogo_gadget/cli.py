@@ -11,6 +11,7 @@ from pathlib import Path
 import click
 import invoke
 import sys
+import subprocess
 
 from gogo_gadget import config
 
@@ -27,8 +28,8 @@ def main_cli():
 def _create_function(name, command):
     def f(ctx, args):
         final_cmd = ' '.join([command] + list(args))
-        res = invoke.run(final_cmd, pty=True)
-        ctx.exit(res.exited)
+        exit_code = subprocess.call(final_cmd, shell=True)
+        ctx.exit(exit_code)
 
     f.__name__ = name
     return f
